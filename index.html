@@ -53,9 +53,16 @@
     <template x-if="view === 'picker'">
       <div class="w-full max-w-4xl">
         <!-- Welcome section -->
+        <!-- Welcome section with enhanced messaging -->
         <div class="text-center mb-8 px-4">
           <h2 class="text-3xl font-serif font-bold text-gray-800 mb-3">Welcome to Your Reflection Space</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">Select a category below to explore thoughtful prompts designed to guide your reflection and personal growth.</p>
+          <p class="text-gray-600 max-w-2xl mx-auto mb-3">Explore thoughtfully designed categories below, each with just <span class="font-medium">4 focused questions</span> to guide your reflection and personal growth.</p>
+          <div class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-gray-600 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Your answers remain completely private — nothing is saved or stored</span>
+          </div>
         </div>
         
         <!-- Replace the category grid section with this animated version -->
