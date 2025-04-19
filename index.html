@@ -80,24 +80,24 @@
     <!-- Replace the prompt screen template with this improved version -->
     <template x-if="view === 'prompt'">
       <div class="max-w-2xl w-full relative">
-        <!-- Sticky header and progress bar -->
-        <div class="sticky top-16 z-10 bg-white/95 backdrop-blur-sm shadow-sm rounded-t-lg px-8 pt-6 pb-2"
-            :style="`border-left: 0.25rem solid ${currentCategory.accent}`">
+        <!-- Replace the sticky header with this transparent version -->
+        <div class="sticky top-16 z-10 bg-white/40 backdrop-blur-md shadow-sm rounded-t-lg px-8 pt-6 pb-2 transition-all duration-300"
+             :style="`border-left: 0.25rem solid ${currentCategory.accent}`">
           <!-- Header with icon -->
           <div class="flex items-center mb-3">
             <span class="text-4xl mr-3" x-text="currentCategory.icon"></span>
             <div>
-              <h2 class="text-2xl font-serif font-bold" x-text="currentCategory.title"></h2>
-              <p class="text-gray-600 text-sm" x-text="currentCategory.intro"></p>
+              <h2 class="text-2xl font-serif font-bold text-gray-800" x-text="currentCategory.title"></h2>
+              <p class="text-gray-700 text-sm" x-text="currentCategory.intro"></p>
             </div>
           </div>
           
           <!-- Progress indicator -->
-          <div class="w-full h-1 bg-gray-100 rounded-full mb-1 overflow-hidden">
+          <div class="w-full h-1 bg-gray-100/60 rounded-full mb-1 overflow-hidden">
             <div class="h-1 transition-all duration-300 ease-in-out" 
                 :style="`width: ${getProgress()}%; background-color: ${currentCategory.accent};`"></div>
           </div>
-          <p class="text-xs text-right text-gray-500 mb-2" x-text="getMotivationalMessage()"></p>
+          <p class="text-xs text-right text-gray-600 mb-2" x-text="getMotivationalMessage()"></p>
         </div>
     
         <!-- Questions container with reduced spacing -->

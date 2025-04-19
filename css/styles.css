@@ -3,10 +3,16 @@
 /* Import Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap');
 
+/* ===== VARIABLES ===== */
 :root {
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Merriweather', serif;
+  --button-color: #4ade80;
+  --button-color2: #3b82f6;
+  --textarea-color: rgba(0, 0, 0, 0.1);
 }
+
+/* ===== BASE STYLES ===== */
 body {
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -18,21 +24,43 @@ header {
   font-family: var(--font-serif);
 }
 
-/* card backdrop & shadows */
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent initial flash before Alpine initializes */
+[x-cloak] { 
+  display: none !important; 
+}
+
+/* ===== COMPONENTS ===== */
 /* Enhanced card styling */
 .card {
-  @apply bg-white/70 backdrop-blur-lg border rounded-lg p-4 transition-all duration-300 hover:shadow-xl;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
 }
 
-/* textarea auto-resize transition */
+.card:hover {
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
 
+/* Enhanced sticky header */
 .sticky {
   position: sticky;
   z-index: 10;
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
-/* Reduced max-height for textareas to keep them on screen better */
+/* Textarea styling */
 textarea {
   transition: all 0.25s ease;
   line-height: 1.6;
@@ -41,59 +69,33 @@ textarea {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   max-height: 300px; /* Reduced from 400px */
   overflow-y: auto;
-}
-
-/* Smooth scrolling for the entire page */
-html {
-  scroll-behavior: smooth;
+  border-radius: 0.5rem;
 }
 
 textarea:focus {
-  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 20px -6px var(--textarea-color, rgba(0, 0, 0, 0.08));
   background-color: rgba(255, 255, 255, 1);
   transform: translateY(-1px);
 }
 
-/* Button hover effects */
+/* Button styling */
 button {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-/* Appear animation for lists */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+button.px-8 {
+  background-image: linear-gradient(to right, 
+    var(--button-color, #4ade80), 
+    var(--button-color2, #3b82f6));
+  transition: all 0.3s ease;
 }
 
-.grid > div {
-  animation: fadeIn 0.4s ease forwards;
-  animation-delay: calc(var(--index) * 0.05s);
-  opacity: 0;
-}
-/* Character counter animation */
-.text-xs {
-  transition: color 0.3s ease;
+button.px-8:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
-/* Prevent initial flash before Alpine initializes */
-[x-cloak] { 
-  display: none !important; 
-}
-/* custom scrollbar hide */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
-  border-radius: 0.25rem;
-}
-
-/* Add these animated card styles */
-/* Update the .animated-card style */
-
+/* ===== CATEGORY CARD STYLES ===== */
 .animated-card {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
@@ -164,7 +166,74 @@ button {
   color: var(--card-color);
 }
 
-/* Make animation more gentle on reduced-motion preference */
+/* ===== QUESTION STYLES ===== */
+/* Question Item Styling */
+.question-item {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.question-item.answered {
+  background-color: rgba(245, 247, 250, 0.7);
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.question-item textarea {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.question-item textarea:focus {
+  border-color: var(--textarea-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--textarea-color) 30%, transparent);
+  transform: translateY(-1px);
+}
+
+/* Character counter animation */
+.text-xs {
+  transition: color 0.3s ease;
+}
+
+.character-counter {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.grid > div {
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: calc(var(--index) * 0.05s);
+  opacity: 0;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== ACCESSIBILITY ===== */
 @media (prefers-reduced-motion: reduce) {
   .animated-card {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -180,5 +249,31 @@ button {
   
   .card-border, .card-glow {
     display: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 640px) {
+  .sticky {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  textarea {
+    max-height: 250px;
+    font-size: 0.95rem;
+  }
+  
+  .question-item {
+    padding: 0.75rem;
   }
 }

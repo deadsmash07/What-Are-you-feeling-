@@ -50,6 +50,14 @@ function journalApp() {
       this.answers = Array(cat.questions.length).fill('');
       this.view = 'prompt';
       
+      // Set CSS variables for consistent styling
+      document.documentElement.style.setProperty('--textarea-color', cat.accent + '40'); // 25% opacity
+      document.documentElement.style.setProperty('--button-color', cat.accent);
+      
+      // Create a slightly different shade for gradient
+      const buttonColor2 = this.adjustColorBrightness(cat.accent, 20);
+      document.documentElement.style.setProperty('--button-color2', buttonColor2);
+      
       // Add smooth page transition
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
@@ -66,7 +74,23 @@ function journalApp() {
         }, 300);
       });
     },
-
+    
+    // Helper function to adjust color brightness
+    adjustColorBrightness(hex, percent) {
+      // Convert hex to RGB
+      let r = parseInt(hex.substring(1, 3), 16);
+      let g = parseInt(hex.substring(3, 5), 16);
+      let b = parseInt(hex.substring(5, 7), 16);
+      
+      // Adjust brightness
+      r = Math.min(255, Math.max(0, r + percent));
+      g = Math.min(255, Math.max(0, g + percent));
+      b = Math.min(255, Math.max(0, b + percent));
+      
+      // Convert back to hex
+      return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    },
+    
     submit() {
       // Calculate stats for this session
       this.currentSessionStats.categoriesCompleted++;
@@ -76,30 +100,48 @@ function journalApp() {
       // Enhanced confetti effect based on how much was written
       const particleMultiplier = Math.min(Math.max(charsWritten / 100, 1), 4);
       
-      confetti({
-        particleCount: Math.round(200 * particleMultiplier),
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'],
-        startVelocity: 30,
-        decay: 0.94,
-        scalar: 0.8
-      });
+      // Create a dynamic confetti color palette based on the category color
+      const categoryColor = this.currentCategory?.accent || '#4ade80';
+      const baseColors = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'];
+      const colors = [...baseColors, categoryColor];
       
-      // show thank‑you, then reset with longer display time
+      // Fire multiple confetti bursts for a more impressive effect
+      const burstConfetti = () => {
+        confetti({
+          particleCount: Math.round(100 * particleMultiplier),
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: colors,
+          startVelocity: 30,
+          decay: 0.94,
+          scalar: 0.8
+        });
+      };
+      
+      // Initial burst
+      burstConfetti();
+      
+      // Follow-up burst for longer writing
+      if (charsWritten > 300) {
+        setTimeout(burstConfetti, 300);
+      }
+      
+      // show thank-you, then reset with longer display time
       this.view = 'thankYou';
       
-      // Calculate a more meaningful display time (3-5 seconds)
-      const displayTime = Math.min(3000 + (charsWritten / 50), 5000);
+      // Calculate a more meaningful display time (3-6 seconds)
+      const displayTime = Math.min(3000 + (charsWritten / 40), 6000);
       
       setTimeout(() => {
         this.view = 'picker';
+        // Reset the header background when returning to the picker
+        document.documentElement.style.removeProperty('--textarea-color');
+        document.documentElement.style.removeProperty('--button-color');
+        document.documentElement.style.removeProperty('--button-color2');
       }, displayTime);
     },
     
     // Helper function to calculate progress percentage
-    // Your getProgress() method is already correct, but let's make sure we're using it properly:
-    
     getProgress() {
       if (!this.currentCategory) return 0;
       const answeredQuestions = this.answers.filter(a => a.trim().length > 0).length;
