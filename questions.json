@@ -1,0 +1,297 @@
+[
+    {
+        "id": "tough-decisions",
+        "title": "Questions for Tough Decisions",
+        "icon": "🌟",
+        "accent": "#FFB300",
+        "intro": "Drawing on Kahneman & Tversky’s decision‑making theory (1979)",
+        "questions": [
+            "What’s the realistically worst‑case outcome for each option?"
+        ]
+    },
+    {
+        "id": "build-confidence",
+        "title": "Questions to Build Confidence",
+        "icon": "💪",
+        "accent": "#0F9D58",
+        "intro": "Inspired by Bandura’s self‑efficacy work (1997)",
+        "questions": [
+            "What past challenges have I overcome?",
+            "Which of my strengths or skills made those victories possible?",
+            "How am I positively impacting people around me?",
+            "What small step can I take right now to trust my abilities?"
+        ]
+    },
+    {
+        "id": "anxiety",
+        "title": "Questions for Anxiety or Stress",
+        "icon": "🌧️",
+        "accent": "#4285F4",
+        "intro": "Rooted in CBT principles (Beck, 2011)",
+        "questions": [
+            "Is my fear realistic, or am I catastrophizing?",
+            "What’s one immediate action I can take to ease this anxiety?",
+            "Have I handled something like this successfully before?",
+            "What can I control here, and what must I accept?"
+        ]
+    },
+    {
+        "id": "practice-forgiveness",
+        "title": "Questions to Practice Forgiveness",
+        "icon": "😌",
+        "accent": "#9C27B0",
+        "intro": "Based on Worthington’s forgiveness interventions (2006)",
+        "questions": [
+            "What am I holding onto by staying angry or hurt?",
+            "What might change if I release this resentment?",
+            "Can I recognize that the person who hurt me is human, with flaws like mine?",
+            "What lesson can I carry forward from this experience?"
+        ]
+    },
+    {
+        "id": "after-mistake",
+        "title": "Questions After a Mistake or Failure",
+        "icon": "🔄",
+        "accent": "#FF5722",
+        "intro": "Influenced by Dweck’s growth mindset research (2006)",
+        "questions": [
+            "What specifically led to this setback?",
+            "What have I learned about myself?",
+            "How can I prevent this from happening again?",
+            "What’s the next best step to move forward positively?"
+        ]
+    },
+    {
+        "id": "boost-mindfulness",
+        "title": "Questions to Boost Mindfulness",
+        "icon": "🌿",
+        "accent": "#4CAF50",
+        "intro": "Grounded in mindfulness‑based cognitive therapy (Segal et al., 2002)",
+        "questions": [
+            "Am I fully engaged in what I’m doing right now?",
+            "What sensations or emotions am I noticing at this moment?",
+            "Am I resisting or accepting this moment?",
+            "What overlooked detail in my surroundings can I observe?"
+        ]
+    },
+    {
+        "id": "career-clarity",
+        "title": "Questions for Career or Academic Clarity",
+        "icon": "🛠️",
+        "accent": "#3F51B5",
+        "intro": "From Holland’s vocational psychology (1997)",
+        "questions": [
+            "Which tasks energize and excite me?",
+            "Am I pursuing this path for myself or to meet others’ expectations?",
+            "What unique strengths could I leverage more?",
+            "How does this option fit the life I truly want?"
+        ]
+    },
+    {
+        "id": "improve-communication",
+        "title": "Questions to Improve Communication",
+        "icon": "🗣️",
+        "accent": "#FF9800",
+        "intro": "Based on Goleman’s emotional intelligence research (1995)",
+        "questions": [
+            "Am I really listening, or just waiting to speak?",
+            "Am I expressing my needs clearly and without blame?",
+            "What does the other person want or need from this interaction?",
+            "Am I responding thoughtfully or reacting emotionally?"
+        ]
+    },
+    {
+        "id": "set-healthy-boundaries",
+        "title": "Questions to Set Healthy Boundaries",
+        "icon": "🚩",
+        "accent": "#E91E63",
+        "intro": "Rooted in assertiveness training (Paterson, 2000)",
+        "questions": [
+            "Does saying “yes” to this feel respectful to myself?",
+            "Am I clear on where my boundaries lie?",
+            "Will agreeing leave me energized or drained?",
+            "Am I avoiding this boundary out of fear of rejection or guilt?"
+        ]
+    },
+    {
+        "id": "time-management",
+        "title": "Questions for Time Management & Productivity",
+        "icon": "⏳",
+        "accent": "#00BCD4",
+        "intro": "Inspired by Covey’s productivity psychology (1989)",
+        "questions": [
+            "Is this task essential, or just keeping me busy?",
+            "What’s the most impactful thing I could tackle right now?",
+            "What are my top priorities today?",
+            "Could someone else handle this to free up my time?"
+        ]
+    },
+    {
+        "id": "before-bed",
+        "title": "Questions Before Bed for Better Sleep",
+        "icon": "💤",
+        "accent": "#795548",
+        "intro": "Based on Walker’s sleep‑hygiene research (2017)",
+        "questions": [
+            "What unresolved worry can I acknowledge and let go tonight?",
+            "Did today’s activities reflect my purpose or values?",
+            "What’s one good thing that happened today?"
+        ]
+    },
+    {
+        "id": "self-compassion",
+        "title": "Questions for Self‑Compassion",
+        "icon": "🧘‍♀️",
+        "accent": "#FFC107",
+        "intro": "From Neff’s compassion‑focused therapy (2003)",
+        "questions": [
+            "Would I speak to a friend the way I’m speaking to myself?",
+            "Can I accept myself exactly as I am right now?",
+            "What would kindness toward myself look like in this moment?",
+            "Am I expecting perfection rather than growth?"
+        ]
+    },
+    {
+        "id": "overcome-procrastination",
+        "title": "Questions to Overcome Procrastination",
+        "icon": "🚧",
+        "accent": "#F44336",
+        "intro": "Drawing on Steel’s motivation research (2007)",
+        "questions": [
+            "What exactly am I avoiding, and why?",
+            "How will I feel once I take action?",
+            "What’s the smallest possible step I can take right now?",
+            "Am I stuck because of overwhelm, perfectionism, or lack of clarity?"
+        ]
+    },
+    {
+        "id": "cultivate-gratitude",
+        "title": "Questions to Cultivate Gratitude",
+        "icon": "🎉",
+        "accent": "#8BC34A",
+        "intro": "Grounded in Seligman’s positive psychology (2011)",
+        "questions": [
+            "What comforts or advantages do I typically overlook?",
+            "Who truly cares about me?",
+            "Which experiences have shaped me positively?",
+            "If I could hold onto one beautiful moment from today, what would it be?"
+        ]
+    },
+    {
+        "id": "declutter-mind",
+        "title": "Questions to Declutter Your Mind",
+        "icon": "🧠",
+        "accent": "#CDDC39",
+        "intro": "Based on cognitive‑psychology and mindfulness research",
+        "questions": [
+            "What exactly am I thinking or feeling right now?",
+            "Is this thought helpful or harmful in this moment?",
+            "Can I control this, or should I let it go?",
+            "What one simple step can I take to feel better?"
+        ]
+    },
+    {
+        "id": "when-hurt",
+        "title": "Questions When You Feel Hurt",
+        "icon": "❤️",
+        "accent": "#9E9E9E",
+        "intro": "Combining emotional‑intelligence and self‑compassion insights",
+        "questions": [
+            "Why did this affect me so deeply?",
+            "Am I taking this personally when it’s not about me?",
+            "What unmet need or expectation lies beneath my hurt?",
+            "What can I learn here to grow?"
+        ]
+    },
+    {
+        "id": "grateful-for-someone",
+        "title": "Questions to Feel Grateful for Someone",
+        "icon": "🙏",
+        "accent": "#FFEB3B",
+        "intro": "From positive‑psychology gratitude research",
+        "questions": [
+            "What specific action did they take that improved my life?",
+            "What sacrifices might they have made for me?",
+            "How would my life be different without them?",
+            "Have I clearly expressed how much they matter?"
+        ]
+    },
+    {
+        "id": "foster-selflessness",
+        "title": "Questions to Foster Selflessness",
+        "icon": "🤝",
+        "accent": "#607D8B",
+        "intro": "Based on prosocial motivation and empathy research (Batson, 1991; Eisenberg & Miller, 1987)",
+        "questions": [
+            "Who in my circle or community could use my help right now?",
+            "If I truly stepped into their shoes, what need would stand out most?",
+            "What small act can I do today that benefits someone else’s well‑being?",
+            "What personal gain am I foregoing and is that trade‑off worth the positive impact?"
+        ]
+    },
+    {
+        "id": "stimulate-creativity",
+        "title": "Questions to Stimulate Creativity",
+        "icon": "🎨",
+        "accent": "#03A9F4",
+        "intro": "Drawing on Csikszentmihalyi’s flow and creativity research (1996)",
+        "questions": [
+            "What “what‑if” scenario could flip this problem on its head?",
+            "Which self‑imposed constraint might spark a novel idea?",
+            "What would a five‑year‑old version of me try here?",
+            "How could I combine two unrelated concepts to generate something new?"
+        ]
+    },
+    {
+        "id": "emotional-regulation",
+        "title": "Questions for Emotional Regulation",
+        "icon": "🛡️",
+        "accent": "#673AB7",
+        "intro": "Based on Gross’s emotion‐regulation framework (1998)",
+        "questions": [
+            "What emotion am I experiencing right now—can I name it?",
+            "Is this emotion driving my thoughts, or can I step back and observe it?",
+            "What reappraisal (“thinking about this differently”) could reduce its intensity?",
+            "What healthy outlet (e.g., movement, journaling) could help me process this feeling?"
+        ]
+    },
+    {
+        "id": "deepen-social-connection",
+        "title": "Questions to Deepen Social Connection",
+        "icon": "🌐",
+        "accent": "#FF4081",
+        "intro": "Grounded in belongingness theory (Baumeister & Leary, 1995)",
+        "questions": [
+            "Who in my network have I not reached out to lately—and why?",
+            "What shared interest or story could I bring up to deepen our bond?",
+            "How can I show genuine curiosity instead of talking about myself?",
+            "What small gesture (a note, a call) could make someone feel valued today?"
+        ]
+    },
+    {
+        "id": "lifelong-learning",
+        "title": "Questions for Lifelong Learning",
+        "icon": "📚",
+        "accent": "#2196F3",
+        "intro": "Inspired by self‑regulated learning research (Schunk, 1995)",
+        "questions": [
+            "What skill or topic energizes me enough to devote 30 minutes daily?",
+            "What measurable milestone will let me know I’ve progressed?",
+            "Which resources (books, courses, mentors) will best support my growth?",
+            "How will I celebrate or share what I’ve learned once I hit that milestone?"
+        ]
+    },
+    {
+        "id": "digital-well-being",
+        "title": "Questions for Digital Well‑Being",
+        "icon": "📱",
+        "accent": "#00ACC1",
+        "intro": "Based on attention‑restoration and digital‑detox studies (Kaplan, 1995; Rosen et al., 2013)",
+        "questions": [
+            "When was the last time I checked my device without a purpose?",
+            "What’s one screen‑free activity I can schedule today to recharge?",
+            "How do I feel physically and mentally after 30 minutes of uninterrupted focus?",
+            "What boundary (e.g., no phones at the table) could I set to protect my attention?"
+        ]
+    }
+]

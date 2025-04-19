@@ -1,0 +1,42 @@
+/* styles.css */
+
+/* Import Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap');
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Merriweather', serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  /* gentle gradient background */
+  background: linear-gradient(135deg, #F0EFFA, #FFF9EC);
+}
+
+header {
+  font-family: var(--font-serif);
+}
+
+/* card backdrop & shadows */
+.card {
+  @apply bg-white/70 backdrop-blur-lg border rounded-lg p-4 transition-shadow hover:shadow-xl;
+}
+
+/* textarea auto-resize transition */
+textarea {
+  transition: height 0.2s ease;
+}
+
+/* custom scrollbar hide */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 0.25rem;
+}
