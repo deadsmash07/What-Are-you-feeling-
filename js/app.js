@@ -5,13 +5,24 @@ function journalApp() {
     currentCategory: null,    // the one the user clicked
     answers: [],              // textarea-bound answers
 
+    // filepath: /home/arnav/Documents/Webdev/self_care/js/app.js
     async init() {
-      // load questions.json from root
       try {
-        const res = await fetch('questions.json');
-        this.categories = await res.json();
+        const res = await fetch('/questions.json');
+        if (!res.ok) {
+          throw new Error(`Failed to fetch questions: ${res.status} ${res.statusText}`);
+        }
+        const text = await res.text();
+        try {
+          this.categories = JSON.parse(text);
+          console.log('Categories loaded:', this.categories);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError, 'Raw text:', text);
+          alert('Error loading questions: Invalid JSON format');
+        }
       } catch (err) {
         console.error('Could not load questions:', err);
+        alert('Failed to load questions. Please check the console for details.');
       }
     },
 
