@@ -64,11 +64,11 @@
             <div
               @click="selectCategory(cat)"
               class="card cursor-pointer flex flex-col items-center p-6 text-center transform transition duration-300 hover:translate-y-[-5px]"
-              :style="`border-color: ${cat.accent}; background: linear-gradient(to bottom right, white, rgba(255,255,255,0.8), white);`"
+              :style="`--card-color: ${cat.accent}; animation-delay: ${cat.animationIndex * 0.05}s;`"
             >
               <div class="text-5xl mb-4" x-text="cat.icon"></div>
-              <div class="font-semibold text-lg text-gray-700 mb-2" x-text="cat.title"></div>
-              <div class="text-xs text-gray-500 italic" x-text="cat.intro"></div>
+              <div class="font-semibold text-lg mb-2" x-text="cat.title"></div>
+              <div class="text-xs opacity-80 italic" x-text="cat.intro"></div>
             </div>
           </template>
         </div>
