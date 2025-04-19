@@ -25,10 +25,29 @@ header {
 }
 
 /* textarea auto-resize transition */
+
+/* Enhanced textarea styling */
 textarea {
-  transition: height 0.2s ease;
+  transition: height 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  line-height: 1.5;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
+textarea:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Character counter animation */
+.text-xs {
+  transition: color 0.3s ease;
+}
+
+/* Prevent initial flash before Alpine initializes */
+[x-cloak] { 
+  display: none !important; 
+}
 /* custom scrollbar hide */
 ::-webkit-scrollbar {
   width: 0.5rem;

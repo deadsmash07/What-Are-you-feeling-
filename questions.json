@@ -6,7 +6,10 @@
         "accent": "#FFB300",
         "intro": "Drawing on Kahneman & Tversky’s decision‑making theory (1979)",
         "questions": [
-            "What’s the realistically worst‑case outcome for each option?"
+            "What’s the realistically worst‑case outcome for each option?",
+            "How does each choice align with my core values?",
+            "What advice would I give a close friend in my situation?",
+            "One year from now, how will I feel about this decision?"
         ]
     },
     {
