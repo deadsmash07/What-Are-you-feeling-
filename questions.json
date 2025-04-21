@@ -296,5 +296,96 @@
             "How do I feel physically and mentally after 30 minutes of uninterrupted focus?",
             "What boundary (e.g., no phones at the table) could I set to protect my attention?"
         ]
+    },
+    {
+        "id": "Stoicism",
+        "title": "Questions for Stoicism",
+        "icon": "🗿",
+        "accent": "#795548",
+        "intro": "Inspired by Stoic philosophy (Epictetus, Seneca, Marcus Aurelius)",
+        "questions": [
+            "What’s outside my control, and how can I accept that?",
+            "How would I advise a friend facing this situation?",
+            "What’s the worst that could happen, and how would I cope?",
+            "What can I learn from this challenge to grow stronger?"
+        ]
+    },
+    {
+        "id": "self-reflection",
+        "title": "Questions for Self-Reflection",
+        "icon": "🔍",
+        "accent": "#FF5722",
+        "intro": "Based on self-reflection and self-awareness research (Goleman, 1995)",
+        "questions": [
+            "What are my core values, and how do they guide my decisions?",
+            "What patterns do I notice in my thoughts and behaviors?",
+            "How do I react to stress, and what can I learn from that?",
+            "What’s one thing I can do today to align with my values?"
+        ]
+    },
+    {
+        "id": "self-care",
+        "title": "Questions for Self-Care",
+        "icon": "🛁",
+        "accent": "#FF9800",
+        "intro": "Inspired by self-care and well-being research (Neff, 2011)",
+        "questions": [
+            "What’s one small thing I can do today to nurture myself?",
+            "How do I feel physically and emotionally right now?",
+            "What activities recharge my energy and bring me joy?",
+            "Am I prioritizing my needs, or putting others first?"
+        ]
+    },
+    {
+        "id": "self-acceptance",
+        "title": "Questions for Self-Acceptance",
+        "icon": "💖",
+        "accent": "#E91E63",
+        "intro": "Based on self-acceptance and self-esteem research (Neff, 2003)",
+        "questions": [
+            "What do I appreciate about myself right now?",
+            "How can I embrace my imperfections as part of my uniqueness?",
+            "What’s one thing I can forgive myself for today?",
+            "How would I treat a friend who feels the way I do?"
+        ]
+    },
+    {
+        "id": "self-discovery",
+        "title": "Questions for Self-Discovery",
+        "icon": "🔑",
+        "accent": "#9C27B0",
+        "intro": "Inspired by self-discovery and personal growth research (Schunk, 1995)",
+        "questions": [
+            "What are my passions, and how can I explore them further?",
+            "What experiences have shaped my identity?",
+            "How do I want to be remembered by others?",
+            "What’s one new thing I can try to learn more about myself?"
+        ]
+    },
+    {
+        "id": "self-empowerment",
+        "title": "Questions for Self-Empowerment",
+        "icon": "⚡",
+        "accent": "#FFEB3B",
+        "intro": "Based on empowerment and agency research (Bandura, 1997)",
+        "questions": [
+            "What’s one area of my life where I feel disempowered?",
+            "How can I take ownership of my choices and actions?",
+            "What resources or support do I need to feel empowered?",
+            "What’s one step I can take today to reclaim my power?"
+        ]
+    },
+    {
+        "id": "resilience",
+        "title": "Questions for Resilience",
+        "icon": "🛡️",
+        "accent": "#4CAF50",
+        "intro": "Based on resilience and coping research (Masten, 2001)",
+        "questions": [
+            "What strengths have helped me overcome challenges in the past?",
+            "How can I reframe this setback as an opportunity for growth?",
+            "What support do I need to navigate this situation?",
+            "What’s one small step I can take to move forward?"
+        ]
     }
 ]
