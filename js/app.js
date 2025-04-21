@@ -5,10 +5,34 @@ function journalApp() {
     currentCategory: null,    // the one the user clicked
     answers: [],              // textarea-bound answers
     isLoading: true,          // loading state for better UX
+    activeCategory: 'all',    // default to showing all categories
     currentSessionStats: {    // track session stats
       categoriesCompleted: 0,
       totalCharactersWritten: 0,
       startTime: null
+    },
+
+    // Category classification mapping
+    categoryMap: {
+      'emotional-wellbeing': ['anxiety', 'emotional-regulation', 'self-compassion', 'when-hurt', 'declutter-mind'],
+      'personal-growth': ['build-confidence', 'after-mistake', 'self-discovery', 'self-reflection', 'lifelong-learning', 'self-empowerment'],
+      'relationships': ['practice-forgiveness', 'improve-communication', 'set-healthy-boundaries', 'grateful-for-someone', 'foster-selflessness', 'deepen-social-connection'],
+      'productivity': ['time-management', 'overcome-procrastination', 'digital-well-being', 'career-clarity', 'stimulate-creativity'],
+      'resilience': ['resilience', 'Stoicism', 'tough-decisions'],
+      'mindfulness': ['boost-mindfulness', 'before-bed', 'cultivate-gratitude'],
+      'self-care': ['self-care', 'self-acceptance']
+    },
+
+    // Get filtered categories based on activeCategory
+    get filteredCategories() {
+      if (this.activeCategory === 'all') {
+        return this.categories;
+      }
+      
+      return this.categories.filter(cat => 
+        this.categoryMap[this.activeCategory] && 
+        this.categoryMap[this.activeCategory].includes(cat.id)
+      );
     },
 
     async init() {
@@ -184,10 +208,13 @@ function journalApp() {
       if (this.view === 'prompt' && this.answers.some(answer => answer.trim().length > 0)) {
         if (confirm('You have unsaved reflections. Return to home page?')) {
           this.view = 'picker';
+          // Reset active category when returning home
+          this.activeCategory = 'all';
         }
       } else {
         // Otherwise just go home
         this.view = 'picker';
+        this.activeCategory = 'all';
       }
     }
   };
