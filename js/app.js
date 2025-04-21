@@ -177,6 +177,18 @@ function journalApp() {
       if (progress < 75) return "You're doing great! Deeper insights await.";
       if (progress < 100) return "Almost there! Finish strong.";
       return "Wonderful job completing your reflection!";
+    },
+    
+    confirmReturnToHome() {
+      // If user is in prompt view and has written something, confirm before redirecting
+      if (this.view === 'prompt' && this.answers.some(answer => answer.trim().length > 0)) {
+        if (confirm('You have unsaved reflections. Return to home page?')) {
+          this.view = 'picker';
+        }
+      } else {
+        // Otherwise just go home
+        this.view = 'picker';
+      }
     }
   };
 }
