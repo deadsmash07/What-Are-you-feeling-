@@ -73,6 +73,16 @@ function journalApp() {
       // initialize blank answers array
       this.answers = Array(cat.questions.length).fill('');
       this.view = 'prompt';
+
+      // Google Analytics event for category selection
+      if (typeof gtag === 'function') {
+        try {
+          gtag('event', 'select_category', { category_id: cat.id, category_title: cat.title });
+        } catch(e) {
+          // fail silently to avoid breaking UX
+          console.warn('gtag event failed', e);
+        }
+      }
       
       // Set CSS variables for consistent styling
       document.documentElement.style.setProperty('--textarea-color', cat.accent + '40'); // 25% opacity
