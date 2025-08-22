@@ -1,0 +1,21 @@
+{
+    "name": "Momentary Journal",
+    "short_name": "Journal",
+    "description": "Private client-side guided journaling. No storage. Reflect freely.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F8F9FF",
+    "theme_color": "#4ade80",
+    "icons": [
+        {
+            "src": "assets/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "assets/logo.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}

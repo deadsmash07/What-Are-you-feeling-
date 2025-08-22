@@ -1,248 +1,466 @@
 <!DOCTYPE html>
 <html lang="en" x-data="journalApp()" x-init="init()">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- ensure all relative URLs resolve to your project root -->
-  <base href="./"/>
-
-  <title>Momentary Journal</title>
-
-  <!-- favicon & logo -->
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
-  <link rel="apple-touch-icon" href="assets/logo.svg"/>
-
-  <!-- TailwindCSS (via CDN) -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Merriweather', 'serif']
-          }
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="./" />
+    <title>
+      Momentary Journal – Private Guided Reflection (No Data Stored)
+    </title>
+    <meta
+      name="description"
+      content="Momentary Journal is a private, client-side guided journaling space with psychological prompt categories. No login. Nothing stored. Reflect freely."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="deadsmash07" />
+    <meta
+      name="keywords"
+      content="journaling,self reflection,mindfulness,anxiety relief,personal growth,private journal"
+    />
+    <link rel="canonical" href="https://whatareyoufeeling.vercel.app/" />
+    <meta name="theme-color" content="#4ade80" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Momentary Journal" />
+    <meta
+      property="og:title"
+      content="Momentary Journal – Private Guided Reflection"
+    />
+    <meta
+      property="og:description"
+      content="Guided psychological prompts. 100% client-side. Nothing saved."
+    />
+    <meta property="og:url" content="https://whatareyoufeeling.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://whatareyoufeeling.vercel.app/image.png"
+    />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Momentary Journal – Private Guided Reflection"
+    />
+    <meta
+      name="twitter:description"
+      content="Guided psychological prompts. 100% client-side. Nothing saved."
+    />
+    <meta
+      name="twitter:image"
+      content="https://whatareyoufeeling.vercel.app/image.png"
+    />
+    <!-- (Optional) Google Search Console verification -->
+    <!-- <meta name="google-site-verification" content="PASTE_CODE_HERE"/> -->
+    <!-- Favicons / Manifest -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="assets/logo.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- TailwindCSS (via CDN) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Merriweather", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- App logic BEFORE Alpine (needs immediate execution) -->
+    <script src="js/app.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZSWGG84B6V"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+      gtag("js", new Date());
+      gtag("config", "G-ZSWGG84B6V");
+    </script>
+    <!-- Vercel Analytics -->
+    <script src="https://vercel.live/analytics/script.js" defer></script>
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- canvas-confetti -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"
+    ></script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Momentary Journal",
+        "applicationCategory": "Productivity",
+        "operatingSystem": "Any",
+        "description": "Private client-side guided journaling with psychological prompt categories.",
+        "author": { "@type": "Person", "name": "deadsmash07" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "url": "https://whatareyoufeeling.vercel.app/"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Journal Prompt Categories",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Anxiety or Stress" },
+          { "@type": "ListItem", "position": 2, "name": "Build Confidence" },
+          { "@type": "ListItem", "position": 3, "name": "Mindfulness" },
+          { "@type": "ListItem", "position": 4, "name": "Resilience" },
+          { "@type": "ListItem", "position": 5, "name": "Self-Compassion" }
+        ]
+      }
+    </script>
+  </head>
 
-  <!-- your custom styles -->
-  <link rel="stylesheet" href="css/styles.css"/>
-
-  <!-- IMPORTANT: Load your app.js BEFORE Alpine.js and WITHOUT defer -->
-  <script src="js/app.js"></script>
-  <!-- Vercel Analytics -->
-  <script src="https://vercel.live/analytics/script.js" defer></script>
-  <!-- Alpine.js -->
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- canvas‑confetti -->
-  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-</head>
-
-<body class="flex flex-col min-h-screen">
-  <!-- — Header — -->
-  <header class="py-6 bg-white/80 backdrop-blur sticky top-0 z-10">
-    <div class="max-w-4xl mx-auto flex items-center space-x-3 px-4">
-      <img src="assets/logo.svg" alt="Logo" class="h-8 w-8 cursor-pointer" @click="confirmReturnToHome()"/>
-      <h1 class="text-2xl font-serif text-gray-800 cursor-pointer" @click="confirmReturnToHome()">Momentary Journal</h1>
-    </div>
-  </header>
-
-  <main class="flex-grow flex items-center justify-center px-4 py-8">
-    <!-- Enhance the landing page with a welcoming intro section -->
-    <template x-if="view === 'picker'">
-      <div class="w-full max-w-4xl">
-        <!-- Welcome section -->
-        <!-- Welcome section with enhanced messaging -->
-        <div class="text-center mb-8 px-4">
-          <h2 class="text-3xl font-serif font-bold text-gray-800 mb-3">Welcome to Your Reflection Space</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto mb-3">Explore thoughtfully designed categories below, each with just <span class="font-medium">4 focused questions</span> to guide your reflection and personal growth.</p>
-          <div class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-gray-600 mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-            </svg>
-            <span>Your answers remain completely private — nothing is saved or stored</span>
-          </div>
-        </div>
-        <!-- After the welcome section, before the grid -->
-        <div class="mb-6 px-4">
-          <h3 class="text-lg font-medium text-gray-700 mb-2">Browse by Category:</h3>
-          <div class="flex flex-wrap gap-2">
-            <button @click="activeCategory = 'all'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'all' ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              All Categories
-            </button>
-            <button @click="activeCategory = 'emotional-wellbeing'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'emotional-wellbeing' ? 'bg-purple-600 text-white hover:bg-purple-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Emotional Well-being
-            </button>
-            <button @click="activeCategory = 'personal-growth'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'personal-growth' ? 'bg-green-600 text-white hover:bg-green-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Personal Growth
-            </button>
-            <button @click="activeCategory = 'relationships'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'relationships' ? 'bg-pink-600 text-white hover:bg-pink-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Relationships
-            </button>
-            <button @click="activeCategory = 'productivity'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'productivity' ? 'bg-blue-600 text-white hover:bg-blue-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Productivity & Focus
-            </button>
-            <button @click="activeCategory = 'resilience'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'resilience' ? 'bg-amber-600 text-white hover:bg-amber-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Resilience & Coping
-            </button>
-            <button @click="activeCategory = 'mindfulness'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'mindfulness' ? 'bg-teal-600 text-white hover:bg-teal-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Mindfulness & Presence
-            </button>
-            <button @click="activeCategory = 'self-care'" 
-                    class="px-4 py-2 rounded-full text-sm transition-all duration-200"
-                    :class="activeCategory === 'self-care' ? 'bg-orange-600 text-white hover:bg-orange-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'">
-              Self-Care & Acceptance
-            </button>
-          </div>
-        </div>
-        
-        <!-- Replace the category grid section with this animated version -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-          <template x-for="cat in filteredCategories" :key="cat.id">
-            <div
-              @click="selectCategory(cat)"
-              class="animated-card cursor-pointer flex flex-col items-center p-6 text-center transform transition-all duration-300 hover:translate-y-[-5px]"
-              :style="`--card-color: ${cat.accent}; animation-delay: ${cat.animationIndex * 0.05}s;`"
-            >
-              <div class="card-icon text-5xl mb-4 transition-transform duration-300" x-text="cat.icon"></div>
-              <div class="font-semibold text-lg mb-2 transition-colors duration-300" x-text="cat.title"></div>
-              <div class="text-xs opacity-80 italic" x-text="cat.intro"></div>
-              <div class="card-glow"></div>
-              <div class="card-border"></div>
-            </div>
-          </template>
-        </div>
+  <body class="flex flex-col min-h-screen">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-gray-700 px-3 py-1 rounded shadow"
+      >Skip to content</a
+    >
+    <!-- — Header — -->
+    <header
+      class="py-6 bg-white/80 backdrop-blur sticky top-0 z-10"
+      role="banner"
+    >
+      <div class="max-w-4xl mx-auto flex items-center space-x-3 px-4">
+        <img
+          src="assets/logo.svg"
+          alt="Logo"
+          class="h-8 w-8 cursor-pointer"
+          @click="confirmReturnToHome()"
+        />
+        <h1
+          class="text-2xl font-serif text-gray-800 cursor-pointer"
+          @click="confirmReturnToHome()"
+        >
+          Momentary Journal
+        </h1>
       </div>
-    </template>
+    </header>
 
-    <!-- Replace the prompt screen template with this improved version -->
-    <template x-if="view === 'prompt'">
-      <div class="max-w-2xl w-full relative">
-        <!-- Replace the sticky header with this transparent version -->
-        <div class="sticky top-16 z-10 bg-white/40 backdrop-blur-md shadow-sm rounded-t-lg px-8 pt-6 pb-2 transition-all duration-300"
-             :style="`border-left: 0.25rem solid ${currentCategory.accent}`">
-          <!-- Header with icon -->
-          <div class="flex items-center mb-3">
-            <span class="text-4xl mr-3" x-text="currentCategory.icon"></span>
-            <div>
-              <h2 class="text-2xl font-serif font-bold text-gray-800" x-text="currentCategory.title"></h2>
-              <p class="text-gray-700 text-sm" x-text="currentCategory.intro"></p>
+    <main
+      id="main"
+      class="flex-grow flex items-center justify-center px-4 py-8"
+      role="main"
+    >
+      <!-- Enhance the landing page with a welcoming intro section -->
+      <template x-if="view === 'picker'">
+        <div class="w-full max-w-4xl">
+          <!-- Welcome section -->
+          <!-- Welcome section with enhanced messaging -->
+          <div class="text-center mb-8 px-4">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-3">
+              Welcome to Your Reflection Space
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-3">
+              Explore thoughtfully designed categories below, each with just
+              <span class="font-medium">4 focused questions</span> to guide your
+              reflection and personal growth.
+            </p>
+            <div
+              class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-gray-600 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span
+                >Your answers remain completely private — nothing is saved or
+                stored</span
+              >
             </div>
           </div>
-          
-          <!-- Progress indicator -->
-          <div class="w-full h-1 bg-gray-100/60 rounded-full mb-1 overflow-hidden">
-            <div class="h-1 transition-all duration-300 ease-in-out" 
-                :style="`width: ${getProgress()}%; background-color: ${currentCategory.accent};`"></div>
+          <!-- After the welcome section, before the grid -->
+          <div class="mb-6 px-4">
+            <h3 class="text-lg font-medium text-gray-700 mb-2">
+              Browse by Category:
+            </h3>
+            <nav aria-label="Category filters" class="flex flex-wrap gap-2">
+              <button
+                @click="activeCategory = 'all'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'all' ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                All Categories
+              </button>
+              <button
+                @click="activeCategory = 'emotional-wellbeing'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'emotional-wellbeing' ? 'bg-purple-600 text-white hover:bg-purple-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Emotional Well-being
+              </button>
+              <button
+                @click="activeCategory = 'personal-growth'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'personal-growth' ? 'bg-green-600 text-white hover:bg-green-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Personal Growth
+              </button>
+              <button
+                @click="activeCategory = 'relationships'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'relationships' ? 'bg-pink-600 text-white hover:bg-pink-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Relationships
+              </button>
+              <button
+                @click="activeCategory = 'productivity'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'productivity' ? 'bg-blue-600 text-white hover:bg-blue-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Productivity & Focus
+              </button>
+              <button
+                @click="activeCategory = 'resilience'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'resilience' ? 'bg-amber-600 text-white hover:bg-amber-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Resilience & Coping
+              </button>
+              <button
+                @click="activeCategory = 'mindfulness'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'mindfulness' ? 'bg-teal-600 text-white hover:bg-teal-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Mindfulness & Presence python3 - <<'PY' import json,sys with
+                open('questions.json') as f: json.load(f) print("questions.json
+                OK") PY
+              </button>
+              <button
+                @click="activeCategory = 'self-care'"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-200"
+                :class="activeCategory === 'self-care' ? 'bg-orange-600 text-white hover:bg-orange-400' : 'bg-white/60 hover:bg-white/90 text-gray-700'"
+              >
+                Self-Care & Acceptance
+              </button>
+            </nav>
           </div>
-          <p class="text-xs text-right text-gray-600 mb-2" x-text="getMotivationalMessage()"></p>
-        </div>
-    
-        <!-- Questions container with reduced spacing -->
-        <div class="card border-0 shadow-lg rounded-t-none px-8 py-4">
-          <div class="space-y-4">
-            <!-- Enhanced textarea section with reduced padding -->
-            <template x-for="(q, i) in currentCategory.questions" :key="i">
-              <div class="relative p-3 rounded-lg transition-all duration-300" :class="{'bg-gray-50/70': answers[i].length > 0}">
-                <label class="block mb-2 font-medium text-gray-800 text-lg" x-text="q"></label>
-                <textarea
-                  x-model="answers[i]"
-                  rows="2"
-                  spellcheck="false"
-                  maxlength="2000"
-                  x-effect="
-                    $el.style.height = 'auto';
-                    $el.style.height = Math.min($el.scrollHeight, 300) + 'px';
-                  "
-                  @input="$el.style.height = 'auto'; $el.style.height = Math.min($el.scrollHeight, 300) + 'px';"
-                  class="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-offset-1 focus:border-transparent transition-all duration-200"
-                  :class="{'focus:ring-amber-400': answers[i].length < 1800, 'focus:ring-orange-400': answers[i].length >= 1800 && answers[i].length < 1980, 'focus:ring-red-400': answers[i].length >= 1980, 'shadow-inner': answers[i].length > 0}"
-                  placeholder="Your thoughts…"
-                ></textarea>
-                <div class="flex justify-between mt-1">
-                  <span class="text-xs font-medium" x-text="`Question ${i+1} of ${currentCategory.questions.length}`"></span>
-                  <span class="text-xs font-medium tracking-wide" 
-                        :class="{'text-gray-400': answers[i].length < 1800, 'text-orange-500': answers[i].length >= 1800 && answers[i].length < 1980, 'text-red-500': answers[i].length >= 1980}">
-                    <span x-text="answers[i].length"></span>/2000
-                  </span>
-                </div>
+
+          <!-- Replace the category grid section with this animated version -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4"
+          >
+            <template x-for="cat in filteredCategories" :key="cat.id">
+              <div
+                @click="selectCategory(cat)"
+                class="animated-card cursor-pointer flex flex-col items-center p-6 text-center transform transition-all duration-300 hover:translate-y-[-5px]"
+                :style="`--card-color: ${cat.accent}; animation-delay: ${cat.animationIndex * 0.05}s;`"
+              >
+                <div
+                  class="card-icon text-5xl mb-4 transition-transform duration-300"
+                  x-text="cat.icon"
+                ></div>
+                <div
+                  class="font-semibold text-lg mb-2 transition-colors duration-300"
+                  x-text="cat.title"
+                ></div>
+                <div class="text-xs opacity-80 italic" x-text="cat.intro"></div>
+                <div class="card-glow"></div>
+                <div class="card-border"></div>
               </div>
             </template>
           </div>
-    
-          <div class="mt-8 flex justify-between items-center">
-            <button
-              @click="view = 'picker'"
-              class="px-5 py-2 text-gray-600 hover:text-gray-800 flex items-center font-medium"
+        </div>
+      </template>
+
+      <!-- Replace the prompt screen template with this improved version -->
+      <template x-if="view === 'prompt'">
+        <div class="max-w-2xl w-full relative">
+          <!-- Replace the sticky header with this transparent version -->
+          <div
+            class="sticky top-16 z-10 bg-white/40 backdrop-blur-md shadow-sm rounded-t-lg px-8 pt-6 pb-2 transition-all duration-300"
+            :style="`border-left: 0.25rem solid ${currentCategory.accent}`"
+          >
+            <!-- Header with icon -->
+            <div class="flex items-center mb-3">
+              <span class="text-4xl mr-3" x-text="currentCategory.icon"></span>
+              <div>
+                <h2
+                  class="text-2xl font-serif font-bold text-gray-800"
+                  x-text="currentCategory.title"
+                ></h2>
+                <p
+                  class="text-gray-700 text-sm"
+                  x-text="currentCategory.intro"
+                ></p>
+              </div>
+            </div>
+
+            <!-- Progress indicator -->
+            <div
+              class="w-full h-1 bg-gray-100/60 rounded-full mb-1 overflow-hidden"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Return
-            </button>
-            <button
-              @click="submit()"
-              class="px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-medium rounded-full
-                     transform hover:scale-105 transition shadow-md hover:shadow-lg"
-            >
-              Complete Reflection
-            </button>
+              <div
+                class="h-1 transition-all duration-300 ease-in-out"
+                :style="`width: ${getProgress()}%; background-color: ${currentCategory.accent};`"
+              ></div>
+            </div>
+            <p
+              class="text-xs text-right text-gray-600 mb-2"
+              x-text="getMotivationalMessage()"
+            ></p>
+          </div>
+
+          <!-- Questions container with reduced spacing -->
+          <div class="card border-0 shadow-lg rounded-t-none px-8 py-4">
+            <div class="space-y-4">
+              <!-- Enhanced textarea section with reduced padding -->
+              <template x-for="(q, i) in currentCategory.questions" :key="i">
+                <div
+                  class="relative p-3 rounded-lg transition-all duration-300"
+                  :class="{'bg-gray-50/70': answers[i].length > 0}"
+                >
+                  <label
+                    class="block mb-2 font-medium text-gray-800 text-lg"
+                    x-text="q"
+                  ></label>
+                  <textarea
+                    x-model="answers[i]"
+                    rows="2"
+                    spellcheck="false"
+                    maxlength="2000"
+                    x-effect="
+                    $el.style.height = 'auto';
+                    $el.style.height = Math.min($el.scrollHeight, 300) + 'px';
+                  "
+                    @input="$el.style.height = 'auto'; $el.style.height = Math.min($el.scrollHeight, 300) + 'px';"
+                    class="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-offset-1 focus:border-transparent transition-all duration-200"
+                    :class="{'focus:ring-amber-400': answers[i].length < 1800, 'focus:ring-orange-400': answers[i].length >= 1800 && answers[i].length < 1980, 'focus:ring-red-400': answers[i].length >= 1980, 'shadow-inner': answers[i].length > 0}"
+                    placeholder="Your thoughts…"
+                  ></textarea>
+                  <div class="flex justify-between mt-1">
+                    <span
+                      class="text-xs font-medium"
+                      x-text="`Question ${i+1} of ${currentCategory.questions.length}`"
+                    ></span>
+                    <span
+                      class="text-xs font-medium tracking-wide"
+                      :class="{'text-gray-400': answers[i].length < 1800, 'text-orange-500': answers[i].length >= 1800 && answers[i].length < 1980, 'text-red-500': answers[i].length >= 1980}"
+                    >
+                      <span x-text="answers[i].length"></span>/2000
+                    </span>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <div class="mt-8 flex justify-between items-center">
+              <button
+                @click="view = 'picker'"
+                class="px-5 py-2 text-gray-600 hover:text-gray-800 flex items-center font-medium"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                Return
+              </button>
+              <button
+                @click="submit()"
+                class="px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-medium rounded-full transform hover:scale-105 transition shadow-md hover:shadow-lg"
+              >
+                Complete Reflection
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </template>
+      </template>
 
-    <!-- 3. Thank You Screen -->
-    <!-- Enhanced thank you screen -->
-    <template x-if="view === 'thankYou'">
-      <div class="flex flex-col items-center justify-center text-center p-10 bg-white/80 backdrop-blur-md rounded-xl shadow-lg max-w-md">
-        <div class="text-6xl mb-4">✨</div>
-        <h2 class="text-3xl font-serif font-bold mb-3 text-gray-800">Thank You</h2>
-        <p class="text-gray-600 mb-6">Your reflection has been completed.<br>Remember that your answers remain private and aren't stored anywhere.</p>
-        <button
-          @click="view = 'picker'"
-          class="px-6 py-2 bg-gradient-to-r from-purple-400 to-indigo-500 text-white font-medium rounded-full
-                 transform hover:scale-105 transition shadow-md hover:shadow-lg"
+      <!-- 3. Thank You Screen -->
+      <!-- Enhanced thank you screen -->
+      <template x-if="view === 'thankYou'">
+        <div
+          class="flex flex-col items-center justify-center text-center p-10 bg-white/80 backdrop-blur-md rounded-xl shadow-lg max-w-md"
         >
-          Explore More Categories
-        </button>
-      </div>
-    </template>
-  </main>
+          <div class="text-6xl mb-4">✨</div>
+          <h2 class="text-3xl font-serif font-bold mb-3 text-gray-800">
+            Thank You
+          </h2>
+          <p class="text-gray-600 mb-6">
+            Your reflection has been completed.<br />Remember that your answers
+            remain private and aren't stored anywhere.
+          </p>
+          <button
+            @click="view = 'picker'"
+            class="px-6 py-2 bg-gradient-to-r from-purple-400 to-indigo-500 text-white font-medium rounded-full transform hover:scale-105 transition shadow-md hover:shadow-lg"
+          >
+            Explore More Categories
+          </button>
+        </div>
+      </template>
+    </main>
 
-  <footer class="py-4 text-center text-sm text-gray-500">
-    <div></div>&copy; 2025 Momentary Journal — No data stored, 100% ephemeral.</div>
-    <div class="mt-1 flex items-center justify-center gap-2">
-      <span>Made with ❤️ by</span>
-      <a href="https://github.com/deadsmash07" target="_blank" rel="noopener" class="text-purple-600 hover:text-purple-800 transition-colors flex items-center">
-        <svg class="h-4 w-4 mr-1" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-        deadsmash07
-      </a>
-      <span>— Reflect today for a better tomorrow</span>
-    </div>
-  </footer>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded');
-    console.log('Alpine available:', typeof Alpine !== 'undefined');
-    console.log('journalApp available:', typeof journalApp !== 'undefined');
-  });
-</script>
-</body>
+    <footer class="py-4 text-center text-sm text-gray-500" role="contentinfo">
+      <div>&copy; 2025 Momentary Journal — No data stored, 100% ephemeral.</div>
+      <div class="mt-1 flex items-center justify-center gap-2">
+        <span>Made with ❤️ by</span>
+        <a
+          href="https://github.com/deadsmash07"
+          target="_blank"
+          rel="noopener"
+          class="text-purple-600 hover:text-purple-800 transition-colors flex items-center"
+        >
+          <svg
+            class="h-4 w-4 mr-1"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            ></path>
+          </svg>
+          <span class="sr-only">Author GitHub:</span>deadsmash07
+        </a>
+        <span>— Reflect today for a better tomorrow</span>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM loaded");
+        if (typeof gtag === "function") {
+          gtag("event", "page_view");
+        }
+      });
+    </script>
+  </body>
 </html>

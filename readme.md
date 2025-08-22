@@ -24,22 +24,54 @@ A simple, private, and ephemeral journaling app designed for guided self-reflect
 *   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (via CDN) for utility-first styling.
 *   **Animations**: Custom CSS animations and [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for a little celebration.
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Local Preview)
 
-This project is a static website with no build process, making it incredibly simple to run locally.
+This is a pure static site. No build step required.
 
-1.  **Clone the repository:**
+1. **Clone the repository**
     ```bash
     git clone https://github.com/deadsmash07/What-Are-you-feeling-.git
+    cd What-Are-you-feeling-
     ```
-
-2.  **Navigate to the project directory:**
+2. **(Option A) Open `index.html` directly** – double‑click it (some features like fetch may require a server in certain browsers).
+3. **(Option B, recommended) Use a tiny local server** so `fetch('questions.json')` always works:
     ```bash
-    cd self_care
+    # Python 3
+    python3 -m http.server 5173
+    # or Node (if installed)
+    npx serve -p 5173
     ```
+    Then visit: http://localhost:5173/
+4. Edit files (e.g. `index.html`, `js/app.js`) and refresh.
 
-3.  **Open `index.html` in your browser.**
-    *   The easiest way is to use a live server. If you're using Visual Studio Code, you can install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension, right-click on `index.html`, and select "Open with Live Server".
+### Deploying (Vercel)
+Push changes to `main` (or create a PR) and Vercel will auto‑deploy. Check the Vercel dashboard for build & analytics.
+
+## 📈 SEO & Analytics
+
+Implemented enhancements:
+* Meta: title, description, canonical, robots, theme-color
+* Open Graph + Twitter Card
+* JSON-LD (SoftwareApplication + ItemList)
+* `robots.txt` + `sitemap.xml` + `manifest.json`
+* Accessible landmarks & skip link
+
+### Google Analytics (GA4)
+1. Create GA4 property at https://analytics.google.com
+2. Web Data Stream → copy Measurement ID (looks like `G-XXXXXXXXXX`).
+3. In `index.html`, replace both instances of `G-XXXXXXXXXX`.
+4. Deploy. Verify real‑time traffic in GA.
+
+### Google Search Console
+1. Go to https://search.google.com/search-console
+2. Add property (Domain or URL prefix). If URL prefix, uncomment the `google-site-verification` meta tag in `<head>` and redeploy.
+3. Submit `https://whatareyoufeeling.vercel.app/sitemap.xml`.
+4. Use URL Inspection → Request Indexing for homepage.
+
+### Performance Ideas (Future)
+* Generate a production Tailwind build to reduce CSS.
+* Add hash-based deep links to categories (e.g. `#c=anxiety`).
+* Local persistence (optional toggle) using `localStorage` (currently intentionally ephemeral).
 
 ## 💡 Project Philosophy
 
@@ -50,4 +82,12 @@ The core idea behind Momentary Journal is to provide a safe, private space for r
 This project was created with ❤️ by **deadsmash07**.
 
 *   **GitHub**: [@deadsmash07](https://github.com/deadsmash07)
+
+## 🤝 Contributing
+Small improvements (typos, accessibility, new prompt categories) welcome. Open an issue first for larger changes.
+
+## 🛡️ Privacy Note
+All logic runs client‑side; no databases, cookies (beyond GA if enabled), or external POST requests. Disable GA by removing its script block if you prefer full anonymity.
+
+Reflect today for a better tomorrow.
 
